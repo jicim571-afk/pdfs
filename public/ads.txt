@@ -1,0 +1,3 @@
+# ads.txt placeholder for ad inventory sellers
+# Replace PUB-XXXXXXXXXXXX with your Google AdSense publisher ID when available
+google.com, PUB-XXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

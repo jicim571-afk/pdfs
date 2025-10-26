@@ -1,0 +1,13 @@
+# robots.txt for https://pdfmakerai.shop
+# Allow all user-agents to crawl the site. Do NOT block any public pages.
+User-agent: *
+Allow: /
+
+# If you keep any private or staging paths, list them as Disallow:
+# Disallow: /admin/
+# Disallow: /private/
+
+# Point to the sitemap so search engines can discover all pages
+Sitemap: https://pdfmakerai.shop/sitemap.xml
+
+# Last updated: 2025-10-26

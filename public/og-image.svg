@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#06b6d4"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0f172a" />
+  <rect x="0" y="0" width="1200" height="630" fill="url(#g)" opacity="0.12" />
+  <g fill="#ffffff" font-family="Inter, Arial, sans-serif">
+    <text x="60" y="210" font-size="56" font-weight="700">PDF Maker AI</text>
+    <text x="60" y="280" font-size="28" opacity="0.95">Fast, free online PDF tools — Merge · Split · Compress · OCR</text>
+    <rect x="60" y="330" width="220" height="60" rx="10" fill="#fff" opacity="0.12" />
+    <text x="80" y="370" font-size="20" fill="#ffffff">https://pdfmakerai.shop</text>
+  </g>
+</svg>

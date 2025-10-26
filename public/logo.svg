@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 360 120" fill="none">
+  <rect width="360" height="120" rx="16" fill="#0ea5e9" />
+  <g transform="translate(24,16)" fill="#fff">
+    <path d="M40 10h40v8H40z" opacity="0.12" />
+    <path d="M8 92c0-22 18-40 40-40h56v-8H48C23.9 44 4 63.9 4 88s19.9 44 44 44h56v-8H48c-22 0-40-18-40-40z" opacity="0.06" />
+    <g transform="translate(10,8)">
+      <path d="M58 10c-14 0-26 12-26 26v28c0 14 12 26 26 26h44V74H58V36h44V10H58z" />
+      <path d="M120 10h-24v56h24V10z" />
+    </g>
+  </g>
+  <text x="156" y="74" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="40">PDFMakerAI</text>
+</svg>
