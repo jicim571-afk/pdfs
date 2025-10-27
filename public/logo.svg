@@ -1,97 +1,315 @@
-<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 360 120" fill="none">
+<?xml version="1.0" encoding="UTF-8"?><?xml version="1.0" encoding="UTF-8"?><?xml version="1.0" encoding="UTF-8"?><?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 360 120" fill="none">
 
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">  <rect width="360" height="120" rx="16" fill="#0ea5e9" />
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
 
-    <!-- Premium Glass Effect Background -->  <g transform="translate(24,16)" fill="#fff">
+    <defs><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
 
-    <defs>    <path d="M40 10h40v8H40z" opacity="0.12" />
+        <!-- Premium Gradients -->
 
-        <filter id="glass" x="-50%" y="-50%" width="200%" height="200%">    <path d="M8 92c0-22 18-40 40-40h56v-8H48C23.9 44 4 63.9 4 88s19.9 44 44 44h56v-8H48c-22 0-40-18-40-40z" opacity="0.06" />
+        <linearGradient id="primary" x1="0%" y1="0%" x2="100%" y2="100%">    <defs><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
 
-            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />    <g transform="translate(10,8)">
+            <stop offset="0%" style="stop-color:#2563eb"/>
 
-            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="glass" />      <path d="M58 10c-14 0-26 12-26 26v28c0 14 12 26 26 26h44V74H58V36h44V10H58z" />
+            <stop offset="100%" style="stop-color:#7c3aed"/>        <!-- Premium Gradients -->
 
-            <feComposite in="SourceGraphic" in2="glass" operator="atop" />      <path d="M120 10h-24v56h24V10z" />
-
-        </filter>    </g>
-
-          </g>
-
-        <!-- Metallic Gradient -->  <text x="156" y="74" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="40">PDFMakerAI</text>
-
-        <linearGradient id="metallic" x1="0" y1="0" x2="100%" y2="100%"></svg>
-
-            <stop offset="0%" stop-color="#4B5563" />
-            <stop offset="50%" stop-color="#9CA3AF" />
-            <stop offset="100%" stop-color="#4B5563" />
         </linearGradient>
-        
-        <!-- Background Gradient -->
-        <linearGradient id="bgGradient" x1="0" y1="0" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#3B82F6" />
-            <stop offset="50%" stop-color="#6366F1" />
-            <stop offset="100%" stop-color="#8B5CF6" />
-        </linearGradient>
-        
-        <!-- 3D Effect -->
-        <filter id="bevel" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
-            <feSpecularLighting in="blur" surfaceScale="5" specularConstant=".75" specularExponent="20" lighting-color="#white" result="specOut">
-                <fePointLight x="100" y="100" z="200" />
-            </feSpecularLighting>
-            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2" />
-            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+
+                <linearGradient id="primary" x1="0%" y1="0%" x2="100%" y2="100%">    <defs><svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">  <rect width="360" height="120" rx="16" fill="#0ea5e9" />
+
+        <!-- Glass Effect -->
+
+        <filter id="glass">            <stop offset="0%" style="stop-color:#2563eb"/>
+
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"/>            <stop offset="100%" style="stop-color:#7c3aed"/>        <!-- Glass Effect -->
+
         </filter>
-        
-        <!-- Glow Effect -->
-        <filter id="glow">
-            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-            <feMerge>
-                <feMergeNode in="coloredBlur" />
-                <feMergeNode in="SourceGraphic" />
+
+                </linearGradient>
+
+        <!-- Shine Effect -->
+
+        <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">                <filter id="glass" x="-50%" y="-50%" width="200%" height="200%">    <!-- Premium Glass Effect Background -->  <g transform="translate(24,16)" fill="#fff">
+
+            <stop offset="0%" style="stop-color:white;stop-opacity:0.5"/>
+
+            <stop offset="100%" style="stop-color:white;stop-opacity:0"/>        <!-- Glass Effect -->
+
+        </linearGradient>
+
+        <filter id="glass">            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+
+        <!-- AI Badge Shadow -->
+
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">            <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+
+            <feOffset dx="2" dy="2"/>            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"/>            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="glass" />    <defs>    <path d="M40 10h40v8H40z" opacity="0.12" />
+
+            <feComponentTransfer>
+
+                <feFuncA type="linear" slope="0.3"/>        </filter>
+
+            </feComponentTransfer>
+
+            <feMerge>                    <feComposite in="SourceGraphic" in2="glass" operator="atop" />
+
+                <feMergeNode/>
+
+                <feMergeNode in="SourceGraphic"/>        <!-- Shine Effect -->
+
             </feMerge>
-        </filter>
 
-        <!-- Diamond Pattern -->
-        <pattern id="diamond" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M0 10 L10 0 L20 10 L10 20 Z" fill="white" opacity="0.1" />
-        </pattern>
+        </filter>        <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">        </filter>        <filter id="glass" x="-50%" y="-50%" width="200%" height="200%">    <path d="M8 92c0-22 18-40 40-40h56v-8H48C23.9 44 4 63.9 4 88s19.9 44 44 44h56v-8H48c-22 0-40-18-40-40z" opacity="0.06" />
+
     </defs>
 
-    <!-- Main Circle Background with Glass Effect -->
-    <circle cx="256" cy="256" r="240" fill="url(#bgGradient)" filter="url(#glass)" />
+            <stop offset="0%" style="stop-color:white;stop-opacity:0.5"/>
+
+    <!-- Main Background Circle -->
+
+    <circle cx="256" cy="256" r="248" fill="url(#primary)"/>            <stop offset="100%" style="stop-color:white;stop-opacity:0"/>
+
+    <circle cx="256" cy="256" r="240" fill="#1e1b4b" opacity="0.95"/>
+
+            </linearGradient>
+
+    <!-- PDF Icon -->
+
+    <g transform="translate(96,96) scale(0.8)">    </defs>        <!-- Metallic Gradient -->            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />    <g transform="translate(10,8)">
+
+        <!-- Document Shape -->
+
+        <path d="M100 50h150l75 75v250H100V50z" fill="white"/>
+
+        <path d="M250 50l75 75h-75V50z" fill="#e5e7eb"/>
+
+            <!-- Main Background Circle -->        <linearGradient id="metallic" x1="0" y1="0" x2="100%" y2="100%">
+
+        <!-- PDF Letters -->
+
+        <g fill="url(#primary)">    <circle cx="256" cy="256" r="248" fill="url(#primary)"/>
+
+            <!-- P -->
+
+            <path d="M130 140h50c25 0 45 20 45 45s-20 45-45 45h-20v60h-30V140z"/>    <circle cx="256" cy="256" r="240" fill="#1e1b4b" opacity="0.95"/>            <stop offset="0%" stop-color="#4B5563" />            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="glass" />      <path d="M58 10c-14 0-26 12-26 26v28c0 14 12 26 26 26h44V74H58V36h44V10H58z" />
+
+            <path d="M180 170h-20v30h20c8 0 15-7 15-15s-7-15-15-15z"/>
+
+                
+
+            <!-- D -->
+
+            <path d="M240 140h40c35 0 50 30 50 75s-15 75-50 75h-40V140z"/>    <!-- PDF Icon -->            <stop offset="50%" stop-color="#9CA3AF" />
+
+            <path d="M280 170h-10v90h10c15 0 20-15 20-45s-5-45-20-45z"/>
+
+                <g transform="translate(96,96) scale(0.8)">
+
+            <!-- F -->
+
+            <path d="M350 140h70v30h-40v30h35v30h-35v60h-30V140z"/>        <!-- Document Shape -->            <stop offset="100%" stop-color="#4B5563" />            <feComposite in="SourceGraphic" in2="glass" operator="atop" />      <path d="M120 10h-24v56h24V10z" />
+
+        </g>
+
+    </g>        <path d="M100 50h150l75 75v250H100V50z" fill="white"/>
+
     
-    <!-- Diamond Pattern Overlay -->
-    <circle cx="256" cy="256" r="240" fill="url(#diamond)" opacity="0.1" />
-    
-    <!-- Document Icon Base with 3D Effect -->
-    <g filter="url(#bevel)">
-        <path d="M160 96h128l96 96v224H160V96z" fill="white" opacity="0.95" />
-        <!-- Document Fold -->
-        <path d="M288 96l96 96h-96V96z" fill="#E5E7EB" />
+
+    <!-- AI Badge -->        <path d="M250 50l75 75h-75V50z" fill="#e5e7eb"/>        </linearGradient>
+
+    <g filter="url(#shadow)" transform="translate(340,340)">
+
+        <rect width="80" height="40" rx="20" fill="#10b981"/>        
+
+        <text x="16" y="28" fill="white" font-family="Arial" font-weight="bold" font-size="24">AI</text>
+
+    </g>        <!-- PDF Letters -->                </filter>    </g>
+
+
+
+    <!-- Shine Effects -->        <g fill="url(#primary)">
+
+    <path d="M150 100l200 200" stroke="url(#shine)" stroke-width="40" opacity="0.1" filter="url(#glass)"/>
+
+    <circle cx="400" cy="100" r="60" fill="url(#shine)" opacity="0.1" filter="url(#glass)"/>            <!-- P -->        <!-- Background Gradient -->
+
+</svg>
+            <path d="M130 140h50c25 0 45 20 45 45s-20 45-45 45h-20v60h-30V140z"/>
+
+            <path d="M180 170h-20v30h20c8 0 15-7 15-15s-7-15-15-15z"/>        <linearGradient id="bgGradient" x1="0" y1="0" x2="100%" y2="100%">          </g>
+
+            
+
+            <!-- D -->            <stop offset="0%" stop-color="#3B82F6" />
+
+            <path d="M240 140h40c35 0 50 30 50 75s-15 75-50 75h-40V140z"/>
+
+            <path d="M280 170h-10v90h10c15 0 20-15 20-45s-5-45-20-45z"/>            <stop offset="50%" stop-color="#6366F1" />        <!-- Metallic Gradient -->  <text x="156" y="74" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="40">PDFMakerAI</text>
+
+            
+
+            <!-- F -->            <stop offset="100%" stop-color="#8B5CF6" />
+
+            <path d="M350 140h70v30h-40v30h35v30h-35v60h-30V140z"/>
+
+        </g>        </linearGradient>        <linearGradient id="metallic" x1="0" y1="0" x2="100%" y2="100%"></svg>
+
     </g>
+
+            
+
+    <!-- AI Badge -->
+
+    <g transform="translate(340,340)">        <!-- 3D Effect -->            <stop offset="0%" stop-color="#4B5563" />
+
+        <rect width="80" height="40" rx="20" fill="#10b981"/>
+
+        <text x="16" y="28" fill="white" font-family="Arial" font-weight="bold" font-size="24">AI</text>        <filter id="bevel" x="-50%" y="-50%" width="200%" height="200%">            <stop offset="50%" stop-color="#9CA3AF" />
+
+    </g>
+
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />            <stop offset="100%" stop-color="#4B5563" />
+
+    <!-- Shine Effects -->
+
+    <path d="M150 100l200 200" stroke="url(#shine)" stroke-width="40" opacity="0.1" filter="url(#glass)"/>            <feSpecularLighting in="blur" surfaceScale="5" specularConstant=".75" specularExponent="20" lighting-color="#FFFFFF" result="specOut">        </linearGradient>
+
+    <circle cx="400" cy="100" r="60" fill="url(#shine)" opacity="0.1" filter="url(#glass)"/>
+
+</svg>                <fePointLight x="100" y="100" z="200" />        
+
+            </feSpecularLighting>        <!-- Background Gradient -->
+
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2" />        <linearGradient id="bgGradient" x1="0" y1="0" x2="100%" y2="100%">
+
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />            <stop offset="0%" stop-color="#3B82F6" />
+
+        </filter>            <stop offset="50%" stop-color="#6366F1" />
+
+                    <stop offset="100%" stop-color="#8B5CF6" />
+
+        <!-- Glow Effect -->        </linearGradient>
+
+        <filter id="glow">        
+
+            <feGaussianBlur stdDeviation="4" result="coloredBlur" />        <!-- 3D Effect -->
+
+            <feMerge>        <filter id="bevel" x="-50%" y="-50%" width="200%" height="200%">
+
+                <feMergeNode in="coloredBlur" />            <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
+
+                <feMergeNode in="SourceGraphic" />            <feSpecularLighting in="blur" surfaceScale="5" specularConstant=".75" specularExponent="20" lighting-color="#white" result="specOut">
+
+            </feMerge>                <fePointLight x="100" y="100" z="200" />
+
+        </filter>            </feSpecularLighting>
+
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2" />
+
+        <!-- Diamond Pattern -->            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+
+        <pattern id="diamond" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">        </filter>
+
+            <path d="M0 10 L10 0 L20 10 L10 20 Z" fill="white" opacity="0.1" />        
+
+        </pattern>        <!-- Glow Effect -->
+
+    </defs>        <filter id="glow">
+
+            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+
+    <!-- Main Circle Background with Glass Effect -->            <feMerge>
+
+    <circle cx="256" cy="256" r="240" fill="url(#bgGradient)" filter="url(#glass)" />                <feMergeNode in="coloredBlur" />
+
+                    <feMergeNode in="SourceGraphic" />
+
+    <!-- Diamond Pattern Overlay -->            </feMerge>
+
+    <circle cx="256" cy="256" r="240" fill="url(#diamond)" opacity="0.1" />        </filter>
+
     
-    <!-- PDF Text with Metallic Effect -->
+
+    <!-- Document Icon Base with 3D Effect -->        <!-- Diamond Pattern -->
+
+    <g filter="url(#bevel)">        <pattern id="diamond" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+
+        <path d="M160 96h128l96 96v224H160V96z" fill="white" opacity="0.95" />            <path d="M0 10 L10 0 L20 10 L10 20 Z" fill="white" opacity="0.1" />
+
+        <!-- Document Fold -->        </pattern>
+
+        <path d="M288 96l96 96h-96V96z" fill="#E5E7EB" />    </defs>
+
+    </g>
+
+        <!-- Main Circle Background with Glass Effect -->
+
+    <!-- PDF Text with Metallic Effect -->    <circle cx="256" cy="256" r="240" fill="url(#bgGradient)" filter="url(#glass)" />
+
+    <g filter="url(#glow)">    
+
+        <!-- P -->    <!-- Diamond Pattern Overlay -->
+
+        <path d="M200 180h60c20 0 40 20 40 40s-20 40-40 40h-20v60h-40V180z" fill="url(#metallic)" />    <circle cx="256" cy="256" r="240" fill="url(#diamond)" opacity="0.1" />
+
+        <path d="M240 200h-20v40h20c10 0 20-10 20-20s-10-20-20-20z" fill="url(#metallic)" />    
+
+            <!-- Document Icon Base with 3D Effect -->
+
+        <!-- D -->    <g filter="url(#bevel)">
+
+        <path d="M280 180h60c20 0 40 20 40 70s-20 70-40 70h-60V180z" fill="url(#metallic)" />        <path d="M160 96h128l96 96v224H160V96z" fill="white" opacity="0.95" />
+
+        <path d="M320 200h-20v100h20c10 0 20-10 20-50s-10-50-20-50z" fill="url(#metallic)" />        <!-- Document Fold -->
+
+                <path d="M288 96l96 96h-96V96z" fill="#E5E7EB" />
+
+        <!-- F -->    </g>
+
+        <path d="M160 180h40v140h-40V180z M160 220h30v20h-30v-20z M160 180h40v20h-40v-20z" fill="url(#metallic)" />    
+
+    </g>    <!-- PDF Text with Metallic Effect -->
+
     <g filter="url(#glow)">
-        <!-- P -->
-        <path d="M200 180h60c20 0 40 20 40 40s-20 40-40 40h-20v60h-40V180z" fill="url(#metallic)" />
-        <path d="M240 200h-20v40h20c10 0 20-10 20-20s-10-20-20-20z" fill="url(#metallic)" />
-        
-        <!-- D -->
+
+    <!-- AI Badge with Glass Effect -->        <!-- P -->
+
+    <g filter="url(#glass)">        <path d="M200 180h60c20 0 40 20 40 40s-20 40-40 40h-20v60h-40V180z" fill="url(#metallic)" />
+
+        <rect x="350" y="350" width="70" height="35" rx="17.5" fill="#10B981" />        <path d="M240 200h-20v40h20c10 0 20-10 20-20s-10-20-20-20z" fill="url(#metallic)" />
+
+        <text x="362" y="375" fill="white" font-family="Arial" font-weight="bold" font-size="20">AI</text>        
+
+    </g>        <!-- D -->
+
         <path d="M280 180h60c20 0 40 20 40 70s-20 70-40 70h-60V180z" fill="url(#metallic)" />
-        <path d="M320 200h-20v100h20c10 0 20-10 20-50s-10-50-20-50z" fill="url(#metallic)" />
-        
-        <!-- F -->
-        <path d="M160 180h40v140h-40V180z M160 220h30v20h-30v-20z M160 180h40v20h-40v-20z" fill="url(#metallic)" />
+
+    <!-- Decorative Lines -->        <path d="M320 200h-20v100h20c10 0 20-10 20-50s-10-50-20-50z" fill="url(#metallic)" />
+
+    <g opacity="0.5">        
+
+        <path d="M180 320h160M180 340h120M180 360h140" stroke="white" stroke-width="2" />        <!-- F -->
+
+    </g>        <path d="M160 180h40v140h-40V180z M160 220h30v20h-30v-20z M160 180h40v20h-40v-20z" fill="url(#metallic)" />
+
     </g>
 
-    <!-- AI Badge with Glass Effect -->
-    <g filter="url(#glass)">
+    <!-- Shine Effects -->
+
+    <circle cx="180" cy="140" r="100" fill="white" opacity="0.1" filter="url(#glass)" />    <!-- AI Badge with Glass Effect -->
+
+    <circle cx="320" cy="360" r="80" fill="white" opacity="0.1" filter="url(#glass)" />    <g filter="url(#glass)">
+
         <rect x="350" y="350" width="70" height="35" rx="17.5" fill="#10B981" />
-        <text x="362" y="375" fill="white" font-family="Arial" font-weight="bold" font-size="20">AI</text>
-    </g>
 
+    <!-- Edge Highlight -->        <text x="362" y="375" fill="white" font-family="Arial" font-weight="bold" font-size="20">AI</text>
+
+    <circle cx="256" cy="256" r="238" stroke="white" stroke-width="4" opacity="0.2" />    </g>
+
+</svg>
     <!-- Decorative Lines -->
     <g opacity="0.5">
         <path d="M180 320h160M180 340h120M180 360h140" stroke="white" stroke-width="2" />
