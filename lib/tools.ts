@@ -56,6 +56,7 @@ export const tools: Tool[] = [
     description: "Split PDF into individual pages.",
     longDescription:
       "Split multi-page PDF files into separate documents. Choose specific pages or extract ranges to get only the pages you need quickly and reliably.",
+    blogContent: "pdf-tools-guide.md",
     category: "PDF",
   },
   {
@@ -110,6 +111,7 @@ export const tools: Tool[] = [
     description: "Convert images between formats (JPG, PNG, etc).",
     longDescription:
       "Convert images between popular formats with options for quality and transparency. Great for preparing assets for web, print, or sharing.",
+    blogContent: "image-conversion-guide.md",
     category: "Image",
   },
   {
@@ -182,6 +184,7 @@ export const tools: Tool[] = [
     description: "Add password protection to your PDF.",
     longDescription:
       "Secure your PDF files with password protection and permission controls to prevent unauthorized printing or editing.",
+    blogContent: "document-security-guide.md",
     category: "PDF",
   },
   {
