@@ -87,7 +87,8 @@ export default function PDFToWordTool() {
                     transformation: {
                       width: 600,
                       height: 800
-                    }
+                    },
+                    type: 'jpg'
                   })
                 ]
               }));
