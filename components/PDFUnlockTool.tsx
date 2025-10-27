@@ -32,9 +32,8 @@ export default function PDFUnlockTool() {
     try {
       // First try to load without password
       const pdfDoc = await PDFDocument.load(bytes, { 
-        ignoreEncryption: false,
-        updateMetadata: false
-      }).catch(() => null);
+        // Some pdf-lib versions differ in options; cast to any for compatibility
+      } as any).catch(() => null);
 
       if (!pdfDoc) {
         return {
@@ -45,14 +44,15 @@ export default function PDFUnlockTool() {
         };
       }
 
+      const pdoc: any = pdfDoc as any;
       const permissions: PDFPermissions = {
-        printing: pdfDoc.isEncrypted ? pdfDoc.canPrint() : true,
-        modifying: pdfDoc.isEncrypted ? pdfDoc.canModify() : true,
-        copying: pdfDoc.isEncrypted ? pdfDoc.canCopy() : true,
-        annotating: pdfDoc.isEncrypted ? pdfDoc.canAnnotate() : true,
-        fillingForms: pdfDoc.isEncrypted ? pdfDoc.canFillForms() : true,
-        contentAccessibility: pdfDoc.isEncrypted ? pdfDoc.canAccessContent() : true,
-        documentAssembly: pdfDoc.isEncrypted ? pdfDoc.canAssembleDocument() : true
+        printing: pdoc.isEncrypted ? (pdoc.canPrint ? pdoc.canPrint() : true) : true,
+        modifying: pdoc.isEncrypted ? (pdoc.canModify ? pdoc.canModify() : true) : true,
+        copying: pdoc.isEncrypted ? (pdoc.canCopy ? pdoc.canCopy() : true) : true,
+        annotating: pdoc.isEncrypted ? (pdoc.canAnnotate ? pdoc.canAnnotate() : true) : true,
+        fillingForms: pdoc.isEncrypted ? (pdoc.canFillForms ? pdoc.canFillForms() : true) : true,
+        contentAccessibility: pdoc.isEncrypted ? (pdoc.canAccessContent ? pdoc.canAccessContent() : true) : true,
+        documentAssembly: pdoc.isEncrypted ? (pdoc.canAssembleDocument ? pdoc.canAssembleDocument() : true) : true
       };
 
       return {
@@ -104,10 +104,9 @@ export default function PDFUnlockTool() {
     try {
       const bytes = await file.arrayBuffer();
       const pdfDoc = await PDFDocument.load(bytes, {
-        ignoreEncryption: false,
-        updateMetadata: false,
+        // Use any cast for options to avoid typing differences between pdf-lib versions
         ...(password ? { password } : {})
-      });
+      } as any);
 
       // Create a new document to remove all restrictions
       const newPdfDoc = await PDFDocument.create();
@@ -117,26 +116,24 @@ export default function PDFUnlockTool() {
       pages.forEach(page => newPdfDoc.addPage(page));
       
       // Copy document metadata
-      if (pdfDoc.getTitle()) newPdfDoc.setTitle(pdfDoc.getTitle());
-      if (pdfDoc.getAuthor()) newPdfDoc.setAuthor(pdfDoc.getAuthor());
-      if (pdfDoc.getSubject()) newPdfDoc.setSubject(pdfDoc.getSubject());
-      if (pdfDoc.getKeywords()) newPdfDoc.setKeywords(pdfDoc.getKeywords());
-      if (pdfDoc.getCreator()) newPdfDoc.setCreator(pdfDoc.getCreator());
-      if (pdfDoc.getProducer()) newPdfDoc.setProducer(pdfDoc.getProducer());
-      if (pdfDoc.getCreationDate()) newPdfDoc.setCreationDate(pdfDoc.getCreationDate());
-      if (pdfDoc.getModificationDate()) newPdfDoc.setModificationDate(pdfDoc.getModificationDate());
+  // Copy metadata safely with type guards
+  try { const t = (pdfDoc as any).getTitle && (pdfDoc as any).getTitle(); if (t) newPdfDoc.setTitle(t as string); } catch {}
+  try { const a = (pdfDoc as any).getAuthor && (pdfDoc as any).getAuthor(); if (a) newPdfDoc.setAuthor(a as string); } catch {}
+  try { const s = (pdfDoc as any).getSubject && (pdfDoc as any).getSubject(); if (s) newPdfDoc.setSubject(s as string); } catch {}
+  try { const k = (pdfDoc as any).getKeywords && (pdfDoc as any).getKeywords(); if (k) newPdfDoc.setKeywords(k as any); } catch {}
+  try { const c = (pdfDoc as any).getCreator && (pdfDoc as any).getCreator(); if (c) newPdfDoc.setCreator(c as string); } catch {}
+  try { const p = (pdfDoc as any).getProducer && (pdfDoc as any).getProducer(); if (p) newPdfDoc.setProducer(p as string); } catch {}
+  try { const cd = (pdfDoc as any).getCreationDate && (pdfDoc as any).getCreationDate(); if (cd) newPdfDoc.setCreationDate(cd as Date); } catch {}
+  try { const md = (pdfDoc as any).getModificationDate && (pdfDoc as any).getModificationDate(); if (md) newPdfDoc.setModificationDate(md as Date); } catch {}
 
-      const unlockedBytes = await newPdfDoc.save({
-        addDefaultPage: false,
-        updateMetadata: true
-      });
+      const unlockedBytes = await newPdfDoc.save({ addDefaultPage: false } as any);
 
       // Cleanup previous URL
       if (unlockedUrl) {
         URL.revokeObjectURL(unlockedUrl);
       }
 
-      const blob = new Blob([unlockedBytes], { type: "application/pdf" });
+  const blob = new Blob([unlockedBytes as any], { type: "application/pdf" });
       setUnlockedUrl(URL.createObjectURL(blob));
 
       // Update PDF info after successful unlock

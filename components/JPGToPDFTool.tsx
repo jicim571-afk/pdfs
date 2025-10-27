@@ -126,8 +126,9 @@ export default function JPGToPDFTool() {
         });
       }
 
-      const pdfBytes = await pdfDoc.save();
-      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+  const pdfBytes = await pdfDoc.save();
+  // pdfBytes is a Uint8Array - cast to any to satisfy Blob typing in TS
+  const blob = new Blob([pdfBytes as any], { type: "application/pdf" });
       
       // Cleanup previous URL
       if (pdfUrl) {

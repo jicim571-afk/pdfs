@@ -34,14 +34,29 @@ export default function PDFCompressTool() {
 
   async function analyzePDF(pdfDoc: PDFDocument): Promise<CompressionStats> {
     const pages = pdfDoc.getPages().length;
-    const images = pdfDoc.context.enumerateIndirectObjects().filter(([_, obj]) => 
-      obj.constructor.name === 'PDFStream' && 
-      obj.getObject().has('Subtype') && 
-      obj.getObject().get('Subtype').toString() === '/Image'
-    ).length;
-    const fonts = new Set(pdfDoc.getPages().flatMap(page => 
-      Object.values(page.node.Resources().lookup('Font', {}))
-    )).size;
+    const images = pdfDoc.context.enumerateIndirectObjects().filter(([_, obj]) => {
+      try {
+        const o: any = obj as any;
+        return o.constructor?.name === 'PDFStream' && o.getObject && o.getObject().has && o.getObject().get('Subtype')?.toString() === '/Image';
+      } catch {
+        return false;
+      }
+    }).length;
+    // Font detection can be fragile across pdf-lib versions. Default to 0 if detection is not reliable.
+    let fonts = 0;
+    try {
+      fonts = new Set(pdfDoc.getPages().flatMap(page => {
+        try {
+          const res: any = (page.node && (page.node as any).Resources && (page.node as any).Resources()) || {};
+          const fontObj = (res && (res.lookup ? (res.lookup('Font', {}) as any) : {})) || {};
+          return Object.values(fontObj || {});
+        } catch {
+          return [] as any[];
+        }
+      })).size;
+    } catch {
+      fonts = 0;
+    }
     
     return {
       originalSize: file!.size,
@@ -100,12 +115,13 @@ export default function PDFCompressTool() {
 
       // Metadata removal
       if (settings.removeMetadata) {
-        pdfDoc.setTitle('');
-        pdfDoc.setAuthor('');
-        pdfDoc.setSubject('');
-        pdfDoc.setKeywords('');
-        pdfDoc.setCreator('');
-        pdfDoc.setProducer('');
+        // clear metadata safely
+        try { (pdfDoc as any).setTitle(''); } catch {}
+        try { (pdfDoc as any).setAuthor(''); } catch {}
+        try { (pdfDoc as any).setSubject(''); } catch {}
+        try { (pdfDoc as any).setKeywords([]); } catch {}
+        try { (pdfDoc as any).setCreator(''); } catch {}
+        try { (pdfDoc as any).setProducer(''); } catch {}
       }
 
       // Font subsetting (cleanup)
@@ -129,7 +145,7 @@ export default function PDFCompressTool() {
         URL.revokeObjectURL(compressedUrl);
       }
 
-      const blob = new Blob([compressedBytes], { type: "application/pdf" });
+  const blob = new Blob([compressedBytes as any], { type: "application/pdf" });
       setCompressedUrl(URL.createObjectURL(blob));
     } catch (err) {
       setError("Error compressing PDF: " + String(err));
@@ -253,7 +269,7 @@ export default function PDFCompressTool() {
                   <input
                     type="checkbox"
                     id={id}
-                    checked={settings[id as keyof CompressionSettings]}
+                    checked={Boolean((settings as any)[id])}
                     onChange={(e) => setSettings(s => ({ 
                       ...s, 
                       [id]: e.target.checked 
@@ -306,7 +322,7 @@ export default function PDFCompressTool() {
         </button>
 
         {/* Results */}
-        {stats?.compressedSize > 0 && compressedUrl && (
+        {stats && stats.compressedSize > 0 && compressedUrl && (
           <div className="bg-green-50 border border-green-200 rounded-xl p-4 space-y-4">
             <div>
               <h3 className="font-medium text-green-800 mb-2">Compression Results:</h3>

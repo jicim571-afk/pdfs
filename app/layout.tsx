@@ -32,14 +32,19 @@ export const metadata = {
 		},
 	},
 	icons: {
-		icon: "/favicon.svg",
-		shortcut: "/favicon.svg",
+		icon: "/logo.svg",
+		shortcut: "/logo.svg",
+		apple: "/logo.png",
+		other: {
+			rel: "apple-touch-icon",
+			url: "/logo.png"
+		}
 	},
 		openGraph: {
 			title: "PDF Maker AI — Online PDF Tools for PDF Lovers",
 			description:
 				"PDF Maker AI is the ultimate online suite for PDF lovers. Use our powerful AI OCR, Merge, Split, Compress, Office to PDF, PDF to JPG tools and more—completely free and easy to use.",
-			images: ["/og-image.svg", "/favicon.svg"],
+			images: ["/og-image.svg", "/logo.svg"],
 			siteName: "PDF Maker AI",
 		},
 		twitter: {
@@ -47,7 +52,7 @@ export const metadata = {
 			title: "PDF Maker AI — Online PDF Tools for PDF Lovers",
 			description:
 				"PDF Maker AI is the ultimate online suite for PDF lovers. Use our powerful AI OCR, Merge, Split, Compress, Office to PDF, PDF to JPG tools and more—completely free and easy to use.",
-			images: ["/og-image.svg"],
+			images: ["/og-image.svg", "/logo.png"],
 		},
 };
 

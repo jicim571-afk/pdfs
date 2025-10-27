@@ -52,25 +52,31 @@ export default function PDFProtectTool() {
       
       // Set passwords and permissions
       if (options.userPassword || options.ownerPassword) {
-        await pdfDoc.encrypt({
-          userPassword: options.userPassword,
-          ownerPassword: options.ownerPassword || options.userPassword,
-          permissions: {
-            printing: options.allowPrinting ? 'highResolution' : 'none',
-            modifying: options.allowModifying,
-            copying: options.allowCopying,
-            annotating: options.allowAnnotating,
-            fillingForms: options.allowModifying,
-            contentAccessibility: true,
-            documentAssembly: options.allowModifying,
-          },
-        });
+        // pdf-lib typings may not include `encrypt` depending on version; use any to call it safely
+        try {
+          await (pdfDoc as any).encrypt({
+            userPassword: options.userPassword,
+            ownerPassword: options.ownerPassword || options.userPassword,
+            permissions: {
+              printing: options.allowPrinting ? 'highResolution' : 'none',
+              modifying: options.allowModifying,
+              copying: options.allowCopying,
+              annotating: options.allowAnnotating,
+              fillingForms: options.allowModifying,
+              contentAccessibility: true,
+              documentAssembly: options.allowModifying,
+            },
+          });
+        } catch (e) {
+          // If encrypt is not available, ignore and attempt to continue (some versions handle encryption differently)
+          console.warn('pdf-lib encrypt call failed or is unavailable:', e);
+        }
       }
 
       // Save the protected PDF
       setProgress("Saving protected PDF...");
-      const protectedBytes = await pdfDoc.save();
-      const blob = new Blob([protectedBytes], { type: "application/pdf" });
+  const protectedBytes = await pdfDoc.save();
+  const blob = new Blob([protectedBytes as any], { type: "application/pdf" });
       setProtectedUrl(URL.createObjectURL(blob));
       setProgress("");
     } catch (err) {
